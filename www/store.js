@@ -2610,7 +2610,8 @@ var CdvPurchase;
                         this.prepareReceipt(nativeData);
                     }
                 }
-                if (!WKskReceipt.nativeData.appStoreReceipt) {
+                
+                //if (!skReceipt.nativeData.appStoreReceipt) {
                     this.log.info('[WK] Cannot prepare the receipt validation body, because appStoreReceipt is missing. Refreshing...');
                     const result = await this.refreshReceipt();
                     if (!result || 'isError' in result) {
@@ -2621,7 +2622,7 @@ var CdvPurchase;
                     }
                     this.log.info('Receipt refreshed.');
                     applicationReceipt = result;
-                }
+                //}
                 const transaction = skReceipt.transactions.slice(-1)[0];
                 return {
                     id: applicationReceipt.bundleIdentifier,
