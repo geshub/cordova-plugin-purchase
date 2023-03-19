@@ -2136,7 +2136,7 @@ var CdvPurchase;
                  *
                  * This is typically done when placing an order and restoring purchases.
                  */
-                this.forceReceiptReload = false;
+                this.forceReceiptReload = true;
                 /** List of products loaded from AppStore */
                 this._products = [];
                 this.validProducts = {};
@@ -2610,8 +2610,8 @@ var CdvPurchase;
                         this.prepareReceipt(nativeData);
                     }
                 }
-                if (!skReceipt.nativeData.appStoreReceipte) {
-                    this.log.info('Cannot prepare the receipt validation body, because appStoreReceipt is missing. Refreshing...');
+                if (!WKskReceipt.nativeData.appStoreReceipt) {
+                    this.log.info('[WK] Cannot prepare the receipt validation body, because appStoreReceipt is missing. Refreshing...');
                     const result = await this.refreshReceipt();
                     if (!result || 'isError' in result) {
                         this.log.warn('Failed to refresh receipt, cannot run receipt validation.');
