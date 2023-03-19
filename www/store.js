@@ -2600,6 +2600,9 @@ var CdvPurchase;
                 const skReceipt = receipt;
                 let applicationReceipt = skReceipt.nativeData;
                 if (this.forceReceiptReload) {
+                    
+                 this.log.info('[WK] Refreshing appStoreReceipt...');
+                    
                     this.forceReceiptReload = false;
                     const nativeData = await this.loadAppStoreReceipt();
                     if (nativeData) {
@@ -2607,7 +2610,7 @@ var CdvPurchase;
                         this.prepareReceipt(nativeData);
                     }
                 }
-                if (!skReceipt.nativeData.appStoreReceipt) {
+                if (!skReceipt.nativeData.appStoreReceipte) {
                     this.log.info('Cannot prepare the receipt validation body, because appStoreReceipt is missing. Refreshing...');
                     const result = await this.refreshReceipt();
                     if (!result || 'isError' in result) {
